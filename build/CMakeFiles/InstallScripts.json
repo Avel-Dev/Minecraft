@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/velu/Minecraft/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

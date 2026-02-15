@@ -1,0 +1,3 @@
+/home/velu/Minecraft/build/CMakeFiles/VulkanApp.dir
+/home/velu/Minecraft/build/CMakeFiles/edit_cache.dir
+/home/velu/Minecraft/build/CMakeFiles/rebuild_cache.dir
