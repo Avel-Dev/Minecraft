@@ -6,6 +6,8 @@
 #include <exception>
 #include <fstream>
 #include <iostream>
+#include <utility>
+#include <ranges>
 #include <limits>
 #include <memory>
 #include <ranges>
@@ -14,6 +16,7 @@
 
 #if defined(__INTELLISENSE__) || !defined(USE_CPP20_MODULES)
 #include <vulkan/vulkan.hpp>
+#include <vulkan/vulkan_core.h>
 #include <vulkan/vulkan_raii.hpp>
 #else
 import vulkan_hpp;
@@ -255,7 +258,7 @@ class HelloTriangleApplication
                 break;
             }
         }
-        if (queueIndex == ~0)
+        if (queueIndex == 0)
         {
             throw std::runtime_error("Could not find a queue for graphics and present");
         }
