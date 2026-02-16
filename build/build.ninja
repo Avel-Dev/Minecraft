@@ -52,7 +52,7 @@ build cmake_object_order_depends_target_VulkanApp: phony || .
 build CMakeFiles/VulkanApp.dir/main.cpp.o: CXX_COMPILER__VulkanApp_unscanned_Debug /home/velu/Minecraft/main.cpp || cmake_object_order_depends_target_VulkanApp
   CONFIG = Debug
   DEP_FILE = CMakeFiles/VulkanApp.dir/main.cpp.o.d
-  FLAGS = -g -std=gnu++17
+  FLAGS = -g -std=gnu++20
   INCLUDES = -isystem /home/velu/VulkanSDK/1.4.341.1/x86_64/include
   OBJECT_DIR = CMakeFiles/VulkanApp.dir
   OBJECT_FILE_DIR = CMakeFiles/VulkanApp.dir
@@ -71,7 +71,7 @@ build VulkanApp: CXX_EXECUTABLE_LINKER__VulkanApp_Debug CMakeFiles/VulkanApp.dir
   DEP_FILE = CMakeFiles/VulkanApp.dir/link.d
   FLAGS = -g
   LINK_FLAGS = -Xlinker --dependency-file=CMakeFiles/VulkanApp.dir/link.d
-  LINK_LIBRARIES = /lib/libvulkan.so
+  LINK_LIBRARIES = -lglfw  /lib/libvulkan.so
   OBJECT_DIR = CMakeFiles/VulkanApp.dir
   POST_BUILD = :
   PRE_LINK = :

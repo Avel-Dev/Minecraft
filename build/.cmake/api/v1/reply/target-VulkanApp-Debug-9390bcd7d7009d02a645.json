@@ -54,7 +54,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -std=gnu++17"
+					"fragment" : "-g -std=gnu++20"
 				}
 			],
 			"includes" : 
@@ -72,7 +72,7 @@
 				[
 					1
 				],
-				"standard" : "17"
+				"standard" : "20"
 			},
 			"sourceIndexes" : 
 			[
@@ -91,6 +91,11 @@
 			},
 			{
 				"backtrace" : 2,
+				"fragment" : "-lglfw",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
 				"fragment" : "/lib/libvulkan.so",
 				"role" : "libraries"
 			}
@@ -99,6 +104,10 @@
 	},
 	"linkLibraries" : 
 	[
+		{
+			"backtrace" : 2,
+			"fragment" : "glfw"
+		},
 		{
 			"backtrace" : 2,
 			"id" : "Vulkan::Vulkan::@6890427a1f51a3e7e1df"

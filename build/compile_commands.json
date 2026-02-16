@@ -1,7 +1,7 @@
 [
 {
   "directory": "/home/velu/Minecraft/build",
-  "command": "/usr/bin/clang++ -isystem /home/velu/VulkanSDK/1.4.341.1/x86_64/include -g -std=gnu++17 -o CMakeFiles/VulkanApp.dir/main.cpp.o -c /home/velu/Minecraft/main.cpp",
+  "command": "/usr/bin/clang++ -isystem /home/velu/VulkanSDK/1.4.341.1/x86_64/include -g -std=gnu++20 -o CMakeFiles/VulkanApp.dir/main.cpp.o -c /home/velu/Minecraft/main.cpp",
   "file": "/home/velu/Minecraft/main.cpp",
   "output": "/home/velu/Minecraft/build/CMakeFiles/VulkanApp.dir/main.cpp.o"
 }

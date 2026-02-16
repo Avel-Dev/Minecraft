@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.16)
 
 project(VulkanApp LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Find Vulkan
@@ -14,4 +14,4 @@ add_executable(VulkanApp
 )
 
 # Link Vulkan
-target_link_libraries(VulkanApp PRIVATE Vulkan::Vulkan)
+target_link_libraries(VulkanApp PRIVATE glfw Vulkan::Vulkan)
