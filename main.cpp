@@ -56,7 +56,7 @@ class HelloTriangleApplication
     vk::raii::PhysicalDevice physicalDevice = nullptr;
     vk::raii::Device device = nullptr;
 
-    uint32_t queueIndex = ~0;
+    uint32_t queueIndex = UINT32_MAX;
     vk::raii::Queue queue = nullptr;
     vk::raii::SwapchainKHR swapChain = nullptr;
     std::vector<vk::Image> swapChainImages;
@@ -258,7 +258,7 @@ class HelloTriangleApplication
                 break;
             }
         }
-        if (queueIndex == 0)
+        if (queueIndex == UINT32_MAX)
         {
             throw std::runtime_error("Could not find a queue for graphics and present");
         }
