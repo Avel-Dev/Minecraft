@@ -1,24 +1,31 @@
+
 #include <algorithm>
 #include <array>
 #include <assert.h>
 #include <atomic>
 #include <chrono>
+#include <cmath>
 #include <condition_variable>
+#include <cstddef>
+#include <cstdint>
 #include <cstdlib>
 #include <cstring>
+#include <ctime>
+#include <exception>
 #include <fstream>
-#include <future>
 #include <iostream>
-#include <limits>
-#include <memory>
 #include <mutex>
 #include <random>
 #include <stdexcept>
 #include <stdint.h>
+#include <string>
 #include <thread>
+#include <utility>
 #include <vector>
 
 #if defined(__INTELLISENSE__) || !defined(USE_CPP20_MODULES)
+#include <vulkan/vulkan.hpp>
+#include <vulkan/vulkan_core.h>
 #include <vulkan/vulkan_raii.hpp>
 #else
 import vulkan_hpp;
@@ -28,6 +35,9 @@ import vulkan_hpp;
 #include <GLFW/glfw3.h>
 
 #define GLM_FORCE_RADIANS
+#include "glm/ext/vector_float2.hpp"
+#include "glm/ext/vector_float4.hpp"
+#include "glm/geometric.hpp"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
@@ -35,6 +45,13 @@ constexpr uint32_t WIDTH = 800;
 constexpr uint32_t HEIGHT = 600;
 constexpr uint32_t PARTICLE_COUNT = 8192;
 constexpr int MAX_FRAMES_IN_FLIGHT = 2;
+
+const std::vector<char const *> validationLayers = {"VK_LAYER_KHRONOS_validation"};
+#ifdef NDEBUG
+constexpr bool enableValidationLayers = false;
+#else
+constexpr bool enableValidationLayers = true;
+#endif
 
 struct UniformBufferObject
 {
@@ -169,7 +186,7 @@ class MultithreadedApplication
     vk::raii::SurfaceKHR surface = nullptr;
     vk::raii::PhysicalDevice physicalDevice = nullptr;
     vk::raii::Device device = nullptr;
-    uint32_t queueIndex = ~0;
+    uint32_t queueIndex = UINT32_MAX;
     vk::raii::Queue queue = nullptr;
     vk::raii::SwapchainKHR swapChain = nullptr;
     vk::raii::SwapchainKHR oldSwapchain = nullptr;
@@ -570,13 +587,40 @@ class MultithreadedApplication
         appInfo.engineVersion = VK_MAKE_VERSION(1, 0, 0);
         appInfo.apiVersion = vk::ApiVersion14;
 
-        auto extensions = getRequiredInstanceExtensions();
+        std::vector<char const *> requiredLayers;
+        if (enableValidationLayers)
+        {
+            requiredLayers.assign(validationLayers.begin(), validationLayers.end());
+        }
+
+        auto layerProperties = context.enumerateInstanceLayerProperties();
+        for (auto const &requiredLayer : requiredLayers)
+        {
+            if (std::ranges::none_of(layerProperties, [requiredLayer](auto const &layerProperty)
+                                     { return strcmp(layerProperty.layerName, requiredLayer) == 0; }))
+            {
+                throw std::runtime_error("Required layer not supported: " + std::string(requiredLayer));
+            }
+        }
+
+        auto requiredExtensions = getRequiredInstanceExtensions();
+        auto extensionProperties = context.enumerateInstanceExtensionProperties();
+        for (auto const &requiredExtension : requiredExtensions)
+        {
+            if (std::ranges::none_of(extensionProperties, [requiredExtension](auto const &extensionProperty)
+                                     { return strcmp(extensionProperty.extensionName, requiredExtension) == 0; }))
+            {
+                throw std::runtime_error("Required extension not supported: " + std::string(requiredExtension));
+            }
+        }
+
         vk::InstanceCreateInfo createInfo{};
         createInfo.pApplicationInfo = &appInfo;
-        createInfo.enabledLayerCount = 0;
         createInfo.ppEnabledLayerNames = nullptr;
-        createInfo.enabledExtensionCount = static_cast<uint32_t>(extensions.size());
-        createInfo.ppEnabledExtensionNames = extensions.data();
+        createInfo.enabledLayerCount = static_cast<uint32_t>(requiredLayers.size());
+        createInfo.ppEnabledLayerNames = requiredLayers.data();
+        createInfo.enabledExtensionCount = static_cast<uint32_t>(requiredExtensions.size());
+        createInfo.ppEnabledExtensionNames = requiredExtensions.data();
 
         instance = vk::raii::Instance(context, createInfo);
     }
@@ -652,7 +696,7 @@ class MultithreadedApplication
                 break;
             }
         }
-        if (queueIndex == ~0)
+        if (queueIndex == UINT32_MAX)
         {
             throw std::runtime_error("Could not find a queue for graphics and present -> terminating");
         }
