@@ -1,7 +1,9 @@
 {
 	"InstallScripts" : 
 	[
-		"/home/velu/Minecraft/build/cmake_install.cmake"
+		"/home/velu/Minecraft/build/cmake_install.cmake",
+		"/home/velu/Minecraft/build/_deps/glm-build/cmake_install.cmake",
+		"/home/velu/Minecraft/build/_deps/glm-build/glm/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

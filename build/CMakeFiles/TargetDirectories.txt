@@ -1,3 +1,8 @@
 /home/velu/Minecraft/build/CMakeFiles/VulkanApp.dir
 /home/velu/Minecraft/build/CMakeFiles/edit_cache.dir
 /home/velu/Minecraft/build/CMakeFiles/rebuild_cache.dir
+/home/velu/Minecraft/build/_deps/glm-build/CMakeFiles/edit_cache.dir
+/home/velu/Minecraft/build/_deps/glm-build/CMakeFiles/rebuild_cache.dir
+/home/velu/Minecraft/build/_deps/glm-build/glm/CMakeFiles/glm.dir
+/home/velu/Minecraft/build/_deps/glm-build/glm/CMakeFiles/edit_cache.dir
+/home/velu/Minecraft/build/_deps/glm-build/glm/CMakeFiles/rebuild_cache.dir

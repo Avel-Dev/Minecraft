@@ -1343,3 +1343,95 @@ events:
       CMAKE_SYSTEM_INCLUDE_PATH:
         - "/usr/include/X11"
 ...
+
+---
+events:
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/FindGit.cmake:111 (find_program)"
+      - "/usr/share/cmake/Modules/FetchContent.cmake:1884 (find_package)"
+      - "/usr/share/cmake/Modules/FetchContent.cmake:1619 (__FetchContent_populateSubbuild)"
+      - "/usr/share/cmake/Modules/FetchContent.cmake:2155:EVAL:2 (__FetchContent_doPopulation)"
+      - "/usr/share/cmake/Modules/FetchContent.cmake:2155 (cmake_language)"
+      - "/usr/share/cmake/Modules/FetchContent.cmake:2394 (__FetchContent_Populate)"
+      - "CMakeLists.txt:24 (FetchContent_MakeAvailable)"
+    mode: "program"
+    variable: "GIT_EXECUTABLE"
+    description: "Git command line client"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "git"
+    candidate_directories:
+      - "/home/velu/VulkanSDK/1.4.341.1/x86_64/bin/"
+      - "/home/velu/.cargo/bin/"
+      - "/home/velu/.local/bin/"
+      - "/home/velu/.local/share/nvim/mason/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/"
+      - "/usr/bin/"
+      - "/usr/sbin/"
+      - "/usr/"
+      - "/bin/"
+      - "/sbin/"
+      - "/usr/X11R6/bin/"
+      - "/usr/X11R6/sbin/"
+      - "/usr/X11R6/"
+      - "/usr/pkg/bin/"
+      - "/usr/pkg/sbin/"
+      - "/usr/pkg/"
+      - "/opt/bin/"
+      - "/opt/sbin/"
+      - "/opt/"
+    searched_directories:
+      - "/home/velu/VulkanSDK/1.4.341.1/x86_64/bin/git"
+      - "/home/velu/.cargo/bin/git"
+      - "/home/velu/.local/bin/git"
+      - "/home/velu/.local/share/nvim/mason/bin/git"
+      - "/usr/local/sbin/git"
+      - "/usr/local/bin/git"
+    found: "/usr/bin/git"
+    search_context:
+      ENV{PATH}:
+        - "/home/velu/VulkanSDK/1.4.341.1/x86_64/bin"
+        - "/home/velu/.cargo/bin"
+        - "/home/velu/VulkanSDK/1.4.341.1/x86_64/bin"
+        - "/home/velu/.local/bin"
+        - "/home/velu/.local/bin"
+        - "/home/velu/.local/share/nvim/mason/bin"
+        - "/home/velu/VulkanSDK/1.4.341.1/x86_64/bin"
+        - "/home/velu/.cargo/bin"
+        - "/home/velu/VulkanSDK/1.4.341.1/x86_64/bin"
+        - "/home/velu/.local/bin"
+        - "/home/velu/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/usr/local"
+        - "/usr"
+        - "/"
+        - "/usr"
+        - "/usr/local"
+        - "/usr/X11R6"
+        - "/usr/pkg"
+        - "/opt"
+...

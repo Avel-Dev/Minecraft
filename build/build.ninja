@@ -47,13 +47,13 @@ cmake_ninja_workdir = /home/velu/Minecraft/build/
 #############################################
 # Order-only phony target for VulkanApp
 
-build cmake_object_order_depends_target_VulkanApp: phony || .
+build cmake_object_order_depends_target_VulkanApp: phony || cmake_object_order_depends_target_glm
 
 build CMakeFiles/VulkanApp.dir/main.cpp.o: CXX_COMPILER__VulkanApp_unscanned_Debug /home/velu/Minecraft/main.cpp || cmake_object_order_depends_target_VulkanApp
   CONFIG = Debug
   DEP_FILE = CMakeFiles/VulkanApp.dir/main.cpp.o.d
   FLAGS = -g -std=gnu++20
-  INCLUDES = -isystem /home/velu/VulkanSDK/1.4.341.1/x86_64/include
+  INCLUDES = -I/home/velu/Minecraft/build/_deps/glm-src -isystem /home/velu/VulkanSDK/1.4.341.1/x86_64/include
   OBJECT_DIR = CMakeFiles/VulkanApp.dir
   OBJECT_FILE_DIR = CMakeFiles/VulkanApp.dir
   TARGET_SUPPORT_DIR = CMakeFiles/VulkanApp.dir
@@ -66,12 +66,12 @@ build CMakeFiles/VulkanApp.dir/main.cpp.o: CXX_COMPILER__VulkanApp_unscanned_Deb
 #############################################
 # Link the executable VulkanApp
 
-build VulkanApp: CXX_EXECUTABLE_LINKER__VulkanApp_Debug CMakeFiles/VulkanApp.dir/main.cpp.o | /lib/libvulkan.so
+build VulkanApp: CXX_EXECUTABLE_LINKER__VulkanApp_Debug CMakeFiles/VulkanApp.dir/main.cpp.o | /lib/libvulkan.so _deps/glm-build/glm/libglm.a || _deps/glm-build/glm/libglm.a
   CONFIG = Debug
   DEP_FILE = CMakeFiles/VulkanApp.dir/link.d
   FLAGS = -g
   LINK_FLAGS = -Xlinker --dependency-file=CMakeFiles/VulkanApp.dir/link.d
-  LINK_LIBRARIES = -lglfw  /lib/libvulkan.so
+  LINK_LIBRARIES = -lglfw  /lib/libvulkan.so  _deps/glm-build/glm/libglm.a
   OBJECT_DIR = CMakeFiles/VulkanApp.dir
   POST_BUILD = :
   PRE_LINK = :
@@ -104,7 +104,105 @@ build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
 build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
 # =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/velu/Minecraft/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for edit_cache
+
+build _deps/glm-build/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/velu/Minecraft/build/_deps/glm-build && /usr/bin/ccmake -S/home/velu/Minecraft -B/home/velu/Minecraft/build
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build _deps/glm-build/edit_cache: phony _deps/glm-build/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build _deps/glm-build/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/velu/Minecraft/build/_deps/glm-build && /usr/bin/cmake --regenerate-during-build -S/home/velu/Minecraft -B/home/velu/Minecraft/build
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build _deps/glm-build/rebuild_cache: phony _deps/glm-build/CMakeFiles/rebuild_cache.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/velu/Minecraft/build/_deps/glm-src/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target glm
+
+
+#############################################
+# Order-only phony target for glm
+
+build cmake_object_order_depends_target_glm: phony || .
+
+build _deps/glm-build/glm/CMakeFiles/glm.dir/detail/glm.cpp.o: CXX_COMPILER__glm_unscanned_Debug /home/velu/Minecraft/build/_deps/glm-src/glm/detail/glm.cpp || cmake_object_order_depends_target_glm
+  CONFIG = Debug
+  DEP_FILE = _deps/glm-build/glm/CMakeFiles/glm.dir/detail/glm.cpp.o.d
+  FLAGS = -g -std=c++20 -Wno-c++98-compat -Wno-c++98-compat-pedantic
+  INCLUDES = -I/home/velu/Minecraft/build/_deps/glm-src
+  OBJECT_DIR = _deps/glm-build/glm/CMakeFiles/glm.dir
+  OBJECT_FILE_DIR = _deps/glm-build/glm/CMakeFiles/glm.dir/detail
+  TARGET_SUPPORT_DIR = _deps/glm-build/glm/CMakeFiles/glm.dir
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target glm
+
+
+#############################################
+# Link the static library _deps/glm-build/glm/libglm.a
+
+build _deps/glm-build/glm/libglm.a: CXX_STATIC_LIBRARY_LINKER__glm_Debug _deps/glm-build/glm/CMakeFiles/glm.dir/detail/glm.cpp.o
+  CONFIG = Debug
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = _deps/glm-build/glm/CMakeFiles/glm.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = _deps/glm-build/glm/libglm.a
+  TARGET_PDB = glm.a.dbg
+  TARGET_SUPPORT_DIR = _deps/glm-build/glm/CMakeFiles/glm.dir
+
+
+#############################################
+# Utility command for edit_cache
+
+build _deps/glm-build/glm/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/velu/Minecraft/build/_deps/glm-build/glm && /usr/bin/ccmake -S/home/velu/Minecraft -B/home/velu/Minecraft/build
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build _deps/glm-build/glm/edit_cache: phony _deps/glm-build/glm/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build _deps/glm-build/glm/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/velu/Minecraft/build/_deps/glm-build/glm && /usr/bin/cmake --regenerate-during-build -S/home/velu/Minecraft -B/home/velu/Minecraft/build
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build _deps/glm-build/glm/rebuild_cache: phony _deps/glm-build/glm/CMakeFiles/rebuild_cache.util
+
+# =============================================================================
 # Target aliases.
+
+build glm: phony _deps/glm-build/glm/libglm.a
+
+build libglm.a: phony _deps/glm-build/glm/libglm.a
 
 # =============================================================================
 # Folder targets.
@@ -114,7 +212,21 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /home/velu/Minecraft/build
 
-build all: phony VulkanApp
+build all: phony VulkanApp _deps/glm-build/all
+
+# =============================================================================
+
+#############################################
+# Folder: /home/velu/Minecraft/build/_deps/glm-build
+
+build _deps/glm-build/all: phony _deps/glm-build/glm/all
+
+# =============================================================================
+
+#############################################
+# Folder: /home/velu/Minecraft/build/_deps/glm-build/glm
+
+build _deps/glm-build/glm/all: phony _deps/glm-build/glm/libglm.a
 
 # =============================================================================
 # Built-in targets
@@ -123,14 +235,14 @@ build all: phony VulkanApp
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja /home/velu/Minecraft/build/cmake_install.cmake: RERUN_CMAKE | /home/velu/Minecraft/CMakeLists.txt /usr/share/cmake/Modules/CMakeCXXInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/Clang-CXX.cmake /usr/share/cmake/Modules/Compiler/Clang.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake/Modules/FindPackageMessage.cmake /usr/share/cmake/Modules/FindVulkan.cmake /usr/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake /usr/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake /usr/share/cmake/Modules/Linker/GNU-CXX.cmake /usr/share/cmake/Modules/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Clang-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Initialize.cmake /usr/share/cmake/Modules/Platform/Linux.cmake /usr/share/cmake/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/4.2.3/CMakeCXXCompiler.cmake CMakeFiles/4.2.3/CMakeSystem.cmake
+build build.ninja /home/velu/Minecraft/build/cmake_install.cmake /home/velu/Minecraft/build/_deps/glm-build/cmake_install.cmake /home/velu/Minecraft/build/_deps/glm-build/glm/cmake_install.cmake: RERUN_CMAKE | /home/velu/Minecraft/CMakeLists.txt /usr/share/cmake/Modules/CMakeCXXInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/Clang-CXX.cmake /usr/share/cmake/Modules/Compiler/Clang.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/ExternalProject/shared_internal_commands.cmake /usr/share/cmake/Modules/FetchContent.cmake /usr/share/cmake/Modules/FetchContent/CMakeLists.cmake.in /usr/share/cmake/Modules/FindGit.cmake /usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake/Modules/FindPackageMessage.cmake /usr/share/cmake/Modules/FindVulkan.cmake /usr/share/cmake/Modules/GNUInstallDirs.cmake /usr/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake /usr/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake /usr/share/cmake/Modules/Linker/GNU-CXX.cmake /usr/share/cmake/Modules/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Clang-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Initialize.cmake /usr/share/cmake/Modules/Platform/Linux.cmake /usr/share/cmake/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/4.2.3/CMakeCXXCompiler.cmake CMakeFiles/4.2.3/CMakeSystem.cmake _deps/glm-src/CMakeLists.txt _deps/glm-src/glm/CMakeLists.txt
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /home/velu/Minecraft/CMakeLists.txt /usr/share/cmake/Modules/CMakeCXXInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/Clang-CXX.cmake /usr/share/cmake/Modules/Compiler/Clang.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake/Modules/FindPackageMessage.cmake /usr/share/cmake/Modules/FindVulkan.cmake /usr/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake /usr/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake /usr/share/cmake/Modules/Linker/GNU-CXX.cmake /usr/share/cmake/Modules/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Clang-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Initialize.cmake /usr/share/cmake/Modules/Platform/Linux.cmake /usr/share/cmake/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/4.2.3/CMakeCXXCompiler.cmake CMakeFiles/4.2.3/CMakeSystem.cmake: phony
+build /home/velu/Minecraft/CMakeLists.txt /usr/share/cmake/Modules/CMakeCXXInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/Clang-CXX.cmake /usr/share/cmake/Modules/Compiler/Clang.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/ExternalProject/shared_internal_commands.cmake /usr/share/cmake/Modules/FetchContent.cmake /usr/share/cmake/Modules/FetchContent/CMakeLists.cmake.in /usr/share/cmake/Modules/FindGit.cmake /usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake/Modules/FindPackageMessage.cmake /usr/share/cmake/Modules/FindVulkan.cmake /usr/share/cmake/Modules/GNUInstallDirs.cmake /usr/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake /usr/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake /usr/share/cmake/Modules/Linker/GNU-CXX.cmake /usr/share/cmake/Modules/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Clang-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Initialize.cmake /usr/share/cmake/Modules/Platform/Linux.cmake /usr/share/cmake/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/4.2.3/CMakeCXXCompiler.cmake CMakeFiles/4.2.3/CMakeSystem.cmake _deps/glm-src/CMakeLists.txt _deps/glm-src/glm/CMakeLists.txt: phony
 
 
 #############################################
