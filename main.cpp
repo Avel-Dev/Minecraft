@@ -6,12 +6,11 @@
 #include <exception>
 #include <fstream>
 #include <iostream>
-#include <utility>
-#include <ranges>
 #include <limits>
 #include <memory>
 #include <ranges>
 #include <stdexcept>
+#include <utility>
 #include <vector>
 
 #if defined(__INTELLISENSE__) || !defined(USE_CPP20_MODULES)
@@ -677,6 +676,8 @@ int main()
     try
     {
         HelloTriangleApplication app;
+
+        std::cout << "Hello world" << "\n";
         app.run();
     }
     catch (const std::exception &e)
